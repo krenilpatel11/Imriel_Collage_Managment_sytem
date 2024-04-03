@@ -26,7 +26,7 @@ export class StudentHttpService {
 
    getStudentbyId(id:number,token:any):Observable<APIResponse<StudentModel>>{
     let response : Observable<APIResponse<StudentModel>>;
-    response = this.http.get<APIResponse<StudentModel>>(`${this.url}api/Student/${name}`,{
+    response = this.http.get<APIResponse<StudentModel>>(`${this.url}api/Student/${id}`,{
       headers: {
         'Authorization':`Bearer ${token}`,
         'Content-Type':'application/json'

@@ -1,34 +1,34 @@
 import { Component } from '@angular/core';
 import { collageModel } from '../../../Model/app.Models';
 import { CollageHttpService } from '../../httpservice/collage-http.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-update-collages',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './update-collages.component.html',
   styleUrl: './update-collages.component.css'
 })
 export class UpdateCollagesComponent {
-  collage : collageModel;
-  collages : Array<any>;
-  message : string;
-  todelete:any;
-  collageNameToGet:any;
-  collageIdToUpdate:any;
+  collagetoUpdate:collageModel;
+  collages:Array<collageModel>;
+  message: string = '';
+
+  collageIdToUpdate:number = 0;
+  todelete: any;
 
   constructor(private serv: CollageHttpService){
-    this.collage = new collageModel(0,0,"","","");
+    this.message = '';
+    this.collagetoUpdate = new collageModel(0,0,'','','');
     this.collages = new Array<collageModel>();
-    this.message = "";
   }
   updateCollageById():void{
     let token = sessionStorage.getItem('token');
-    this.serv.putCollageData(this.collageIdToUpdate,this.collage,token).subscribe({
+    this.serv.putCollageData(this.collageIdToUpdate,this.collagetoUpdate,token).subscribe({
       next:(response) => {
-        this.collage = response.Record;
+        this.collagetoUpdate = response.Record;
         this.message = response.Message;
-
         console.log(response.Record);
       },
       error:(error)=>{

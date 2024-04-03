@@ -2,18 +2,20 @@ import internal from "stream";
 
 export class collageModel
 {
-  [key: number]: any;
+  [key: string]: any;
   constructor(
-    public collageUniqueId: number,
+    public collegeUniqueId: number,
     public CollegeId: number,
     public Name: string,
     public Location:string,
     public Description: string,
-    //public Courses : CourseModel[],
+   // public Courses : CourseModel[],
 ){}
 }
 export class CourseModel
 {
+  [key: string]: any;
+
   constructor(
     public courseUniqueId: number,
     public CourseId: number,
@@ -27,6 +29,8 @@ export class CourseModel
 }
 
 export class StudentModel{
+  [key: string]: any;
+
   constructor(
     public AdmissionId : number,
     public StudentId:number,
@@ -44,6 +48,8 @@ export class StudentModel{
   }
 
   export class StudentCourses{
+    [key: string]: any;
+
     constructor(
       public AdmissionId:number,
       public Student:StudentModel,
@@ -64,6 +70,8 @@ export class StudentModel{
 // }
 
 export class AttendenceModel{
+  [key: string]: any;
+
   constructor(
     public StudentId:number,
     public AttendenceDate:Date,
@@ -72,6 +80,8 @@ export class AttendenceModel{
 }
 
 export class ExamReportModel{
+  [key: string]: any;
+
   constructor(
     public StudentId:number,
     public courses:CourseModel,
@@ -90,4 +100,8 @@ export class APIResponse<T>{
     public Records: Array<T>,
     public Record: T
   ){}
+
+  // public getRecordsAsArray(): Array<T> {
+  //   return Object.keys(this.Records).map(key => this.Records[key]);
+  // }
 }

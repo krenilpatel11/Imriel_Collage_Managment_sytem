@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CollageHttpService } from '../../httpservice/collage-http.service';
-import { collageModel } from './../../../Model/app.Models';
+import { APIResponse, collageModel } from './../../../Model/app.Models';
 import { NgFor } from '@angular/common';
 
 @Component({
@@ -17,15 +17,12 @@ export class GetCollagesComponent implements OnInit {
   todelete: any;
 
   constructor(private collageService: CollageHttpService) {
-    //this.collage = new collageModel(0, 0, '', '', '');
-    //this.collages = [];
-    // this.message = '';
-    // this.collageNameToGet = '';
     this.todelete = null;
   }
 
   ngOnInit(): void {
     this.getCollageDetails();
+    console.log(this.collages);
   }
 
   getCollageDetails(): void {
@@ -37,26 +34,14 @@ export class GetCollagesComponent implements OnInit {
     }
 
     this.collageService.getCollageData(token).subscribe({
-      next: (response) => {
-        // Convert list-like object to an array
-        const recordsArray: collageModel[] = Array.from(Object.keys(response.Records), key => response.Records[key]);
+      next: (value: APIResponse<collageModel>) => {
 
-        this.collages = recordsArray.map((item: collageModel) => ({
-          collageUniqueId: item.collageUniqueId,
-          CollegeId: item.CollegeId,
-          Name: item.Name,
-          Location: item.Location,
-          Description: item.Description
-        }));
-        this.message = response.Message;
+        this.collages = Object.values(value.Records);
+
         console.log(this.collages);
       },
       error: (error) => {
-        if (error.status === 404) {
-          this.message = 'The requested resource was not found.';
-        } else {
-          this.message = `An error occurred: ${error.message}`;
-        }
+        this.message = `An error occurred: ${error.message}`;
         console.error(this.message);
       }
     });

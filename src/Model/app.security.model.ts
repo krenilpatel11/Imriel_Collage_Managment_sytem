@@ -35,5 +35,6 @@ export class SecurityResponse{
    // public userRole : string
 
   ){}
+
 }
 
