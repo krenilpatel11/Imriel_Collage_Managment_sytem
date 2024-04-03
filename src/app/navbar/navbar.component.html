@@ -1,0 +1,22 @@
+<nav class="navbar w-screen border-b-2 shadow-sm fixed bg-white opacity-95">
+  <div class="nav-element flex flex-col lg:flex-row  contianer items-center justify-between p-3 px-10">
+    <div class="logo" >
+      <img src="../../assets/horiz_logo_eduHub2.svg" alt="EduHub Connect" class="h-16">
+    </div>
+    <div class="nav-link ">
+      <ul class="flex gap-4 md:gap-6 lg:gap-8 font-semibold pr-5 pt-4 lg:pt-0 text-gray-700 items-center">
+        <li class="hover:text-brandPrimary  hover:duration-200 cursor-pointer" [routerLink]="['']">Home</li>
+        <li class="hover:text-brandPrimary   hover:duration-200 cursor-pointer" [routerLink]="['collage']">Explore Collages</li>
+        <li class="hover:text-brandPrimary   hover:duration-200 cursor-pointer">Students protoal</li>
+        <li class="hover:text-brandPrimary   hover:duration-200 cursor-pointer">Admission </li>
+
+        <button  class="hover:to-brandGrandient1 bg-gradient-to-br from-brandGrandient1 to-brandGrandient2 text-white rounded-sm px-5 py-2 hover:duration-200 cursor-pointer" [routerLink]="['login']">Login</button>
+        <li  class="hover:to-brandGrandient1 bg-gradient-to-br from-brandGrandient1 to-brandGrandient2 text-white rounded-sm px-5 py-2 hover:duration-200 cursor-pointer" [routerLink]="['register']">Register</li>
+
+
+        <button class="hover:to-brandGrandient1 bg-gradient-to-br from-brandGrandient1 to-brandGrandient2 text-white rounded-sm px-5 py-2 hover:duration-200 cursor-pointer" (click)="logout">Logout</button>
+
+      </ul>
+    </div>
+</div>
+</nav>

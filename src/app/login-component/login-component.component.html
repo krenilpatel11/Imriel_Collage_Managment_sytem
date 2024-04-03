@@ -1,0 +1,60 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form flex justify-center shadow-sm flex-col bg-cover h-screen" style="background-image: url('../../assets/login_background-2.jpg');">
+  <div class="container w-[35vw] flex flex-col items-center bg-white bg-opacity-25 rounded-md my-32 mx-auto p-10 ">
+    <div class="logo">
+      <img src="../../assets/icon-eduHub.svg" alt="logo">
+    </div>
+      <div class="form-group " >
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      class="form-control mt-10 pl-4 w-96 py-3 rounded-sm font-medium "
+      placeholder="Enter the Email Address"
+      [(ngModel)]="userEmail"/>
+    <div
+      *ngIf="
+        loginForm.get('email')?.invalid &&
+        (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+      "
+      class="error-message"
+    >
+      <strong *ngIf="loginForm.get('email')?.hasError('required')"
+      class="text-red-700" >Email is required.</strong
+      >
+      <strong *ngIf="loginForm.get('email')?.hasError('email')" class="text-red-700" >
+        Invalid email format.</strong
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      class="form-control mt-5 pl-4 w-96 py-3 rounded-sm"
+      placeholder="Enter the Password "
+      [(ngModel)]="userPass"
+    />
+    <div
+      *ngIf="
+        loginForm.get('password')?.invalid &&
+        (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)
+      "
+      class="error-message"
+    >
+      <strong *ngIf="loginForm.get('password')?.hasError('required')"
+      class="text-red-700">Password is required.</strong
+      >
+      <strong *ngIf="loginForm.get('password')?.hasError('minlength')"
+       class="text-red-700" >Password must be at least 6 characters long.</strong
+      >
+    </div>
+  </div>
+  <button type="submit" [disabled]="loginForm.invalid" (click)="loginUser()" class="btn px-44 mt-5 hover:bg-gradient-to-t hover:bg-brandGrandient1 text-white font-semibold rounded  bg-gradient-to-tl py-3 text-center  from-brandGrandient2 to-brandGrandient1 cursor-pointer ">
+    Login
+  </button>
+
+
+</div>
+
+</form>

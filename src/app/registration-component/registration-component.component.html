@@ -1,0 +1,98 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form flex justify-center shadow-sm flex-col bg-cover h-screen" style="background-image: url('../../assets/login_background-2.jpg');">
+  <div class="container w-[35vw] flex flex-col items-center bg-white bg-opacity-25 rounded-md my-32 mx-auto p-10 ">
+    <div class="logo">
+      <img src="../../assets/icon-eduHub.svg" alt="logo">
+    </div>
+      <div class="form-group " >
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      class="form-control mt-10 pl-4 w-96 py-3 rounded-sm font-medium "
+      placeholder="Enter the Email Address"
+      [(ngModel)]="newUserEmail"  />
+    <div
+      *ngIf="
+        registerForm.get('email')?.invalid &&
+        (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)
+      "
+      class="error-message"
+    >
+      <strong *ngIf="registerForm.get('email')?.hasError('required')"
+      class="text-red-700" >Email is required.</strong
+      >
+      <strong *ngIf="registerForm.get('email')?.hasError('email')" class="text-red-700" >
+        Invalid email format.</strong
+      >
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+      class="form-control mt-5 pl-4 w-96 py-3 rounded-sm"
+      placeholder="Enter the Password "
+      [(ngModel)]="newUserPass"
+    />
+    <div
+      *ngIf="
+        registerForm.get('password')?.invalid &&
+        (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)
+      "
+      class="error-message"
+    >
+      <strong *ngIf="registerForm.get('password')?.hasError('required')"
+      class="text-red-700"   >Password is required.</strong
+      >
+      <strong *ngIf="registerForm.get('password')?.hasError('minlength')"
+       class="text-red-700" >Password must be at least 6 characters long.</strong
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      type="password"
+      id="confirmpassword"
+      formControlName="confirmpassword"
+      class="form-control mt-5 pl-4 w-96 py-3 rounded-sm"
+      placeholder="Enter the Confirm Password "
+      [(ngModel)]="cnfNewUserPass"
+    />
+    <div
+      *ngIf="
+        registerForm.get('confirmpassword')?.invalid &&
+        (registerForm.get('confirmpassword')?.dirty || registerForm.get('confirmpassword')?.touched)
+      "
+      class="error-message"
+    >
+      <strong *ngIf="registerForm.get('confirmpassword')?.hasError('required')"
+      class="text-red-700"   >Confirm Password is required.</strong
+      >
+
+    </div>
+  </div>
+
+
+    <!-- Other form controls -->
+
+    <div class="form-group">
+
+      <select id="role-select" formControlName="RoleInfo" class="mt-5 pl-4 w-96 py-3 gap-2 rounded-sm" [(ngModel)]="userRole" >
+        <option value="College"  class="font-medium pt-2 ">CollageAdmin</option>
+        <option value="Student"  class="font-medium pt-4" selected>Student</option> <!-- Default selected role -->
+      </select>
+      <div *ngIf="registerForm.get('RoleInfo')?.invalid && (registerForm.get('RoleInfo')?.dirty || registerForm.get('RoleInfo')?.touched)" class="error-message">
+        <strong *ngIf="registerForm.get('RoleInfo')?.hasError('required')" class="text-red-700">Role is required.</strong>
+      </div>
+    </div>
+
+    <!-- Other form controls -->
+
+  <button type="submit" [disabled]="registerForm.invalid" (click)="CreateNewUser()" class="btn px-44 mt-5 hover:bg-gradient-to-t hover:bg-brandGrandient1 text-white font-semibold rounded  bg-gradient-to-tl py-3 text-center  from-brandGrandient2 to-brandGrandient1 cursor-pointer ">
+    Register
+  </button>
+</div>
+
+</form>
