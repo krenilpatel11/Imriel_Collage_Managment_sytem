@@ -1,5 +1,9 @@
+<div class="container mx-auto justify-between pt-10">
 <!-- responsive table-->
-<button (click)="getCollageDetails">getCollageDetails</button>
+<button (click)="getCollageDetails()"
+ class="bg-brandGrandient1 text-white font-medium px-3 py-1 rounded-sm">getCollageDetails</button>
+<input type="text" [(ngModel)]="searchTerm" (input)="searchCollages()" placeholder="Search collages" class="m-4 border-2 px-2 py-1 rounded-sm">
+</div>
 <div class="mt-2 container pt-10 mx-auto">
   <table class="max-w-8xl mx-auto table-auto">
     <thead class="justify-between">
@@ -51,16 +55,20 @@
           <span>{{clg.Description}}</span>
         </td>
         <td class="px-16 py-2">
-          <!-- <span>{{clg.Courses}}</span> -->
+          <span *ngFor="let courseName of courses[clg.collegeUniqueId]?.split('')">{{ courseName }}</span>
+
+
         </td>
 
         <td class="px-16 py-2">
-          <span class="text-yellow-500 flex">
+          <span class="text-yellow-500 flex cursor-pointer">
+            <button class="cursor-pointer" (click)="navigateToUpdate(clg.collegeUniqueId)">
           <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-5 w-5 text-green-700 mx-2"
+                                        class="h-5 w-5 text-green-700 mx-2 "
                                         viewBox="0 0 20 20"
                                         fill="currentColor"
+
                                     >
                                         <path
                                             d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
@@ -71,6 +79,8 @@
                                             clip-rule="evenodd"
                                         />
                                     </svg>
+                                  </button>
+                                  <button class="cursor-pointer" (click)="deleteCollage(clg.collegeUniqueId)" >
              <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             class="h-5 w-5 text-red-700"
@@ -83,6 +93,7 @@
                                                 clip-rule="evenodd"
                                             />
                                         </svg>
+           </button>
           </span>
         </td>
       </tr>

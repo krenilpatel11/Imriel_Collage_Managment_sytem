@@ -1,0 +1,62 @@
+<div class="container mx-auto pt-16">
+  <section class="call-to-action mx-auto flex justify-center flex-col items-center gap-6 ">
+    <div>
+      <h2 class="font-black text-gray-700 tracking-tight text-3xl text-center mt-14">Students details</h2>
+    </div>
+
+    <div class="call-to-action mx-auto flex justify-center items-center gap-6">
+    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+      <img width="36" height="28" src="https://img.icons8.com/pulsar-line/48/login-rounded.png" alt="login-rounded"/>
+      <button
+        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-700 font-bold hover:text-gray-700 focus:relative"
+        [routerLink]="['createStudent']"
+      >
+      Create
+      </button>
+
+    </div>
+    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+      <img width="36" height="28"  src="https://img.icons8.com/windows/32/add-user-male--v1.png" alt="add-user-male--v1"/>
+      <button
+        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-700 font-bold hover:text-gray-700 focus:relative"
+        [routerLink]="['updateStudent']"
+      >
+      Update
+      </button>
+
+    </div>
+    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+      <img width="36" height="28"  src="https://img.icons8.com/material-outlined/24/search-property.png" alt="search-property"/>
+      <button
+        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-700 font-bold hover:text-gray-700 focus:relative"
+        [routerLink]="['getStudent']"
+      >
+      ShowStudents
+      </button>
+
+    </div>
+    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+      <img width="36" height="28"  src="https://img.icons8.com/material-outlined/24/search-property.png" alt="search-property"/>
+      <button
+        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-700 font-bold hover:text-gray-700 focus:relative"
+        [routerLink]="['getCourses']"
+      >
+      ShowCourses
+      </button>
+
+    </div>
+    <div class="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+      <img width="36" height="28"  src="https://img.icons8.com/material-outlined/24/search-property.png" alt="search-property"/>
+      <button
+        class="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-700 font-bold hover:text-gray-700 focus:relative"
+        [routerLink]="['getCollage']"
+      >
+      ShowCollage
+      </button>
+
+    </div>
+  </div>
+  </section>
+</div>
+
+<router-outlet></router-outlet>

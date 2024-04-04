@@ -24,7 +24,7 @@ export class RegistrationComponentComponent implements OnInit {
   newUserEmail:string="";
   newUserPass:string="";
   cnfNewUserPass:string="";
-  userRole:string="";
+  Role:string="";
 
   constructor(private formBuilder: FormBuilder,private serv: SecurityInfraService,private router: Router) {
     this.newUser = new AppUser('' ,'','','');
@@ -43,7 +43,7 @@ export class RegistrationComponentComponent implements OnInit {
     this.newUser.Email = this.newUserEmail;
     this.newUser.Password = this.newUserPass;
     this.newUser.ConfirmPassword= this.cnfNewUserPass;
-    this.newUser.Role = this.userRole;
+    this.newUser.Role = this.Role;
     if (this.newUserPass !== this.cnfNewUserPass) {
       this.message = 'Passwords do not match.';
       return;

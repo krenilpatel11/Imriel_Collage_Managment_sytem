@@ -79,8 +79,8 @@
 
     <div class="form-group">
 
-      <select id="role-select" formControlName="RoleInfo" class="mt-5 pl-4 w-96 py-3 gap-2 rounded-sm" [(ngModel)]="userRole" >
-        <option value="College"  class="font-medium pt-2 ">CollageAdmin</option>
+      <select id="role-select" formControlName="RoleInfo" class="mt-5 pl-4 w-96 py-3 gap-2 rounded-sm" [(ngModel)]="Role" >
+        <option value="College"  class="font-medium pt-2 ">College</option>
         <option value="Student"  class="font-medium pt-4" selected>Student</option> <!-- Default selected role -->
       </select>
       <div *ngIf="registerForm.get('RoleInfo')?.invalid && (registerForm.get('RoleInfo')?.dirty || registerForm.get('RoleInfo')?.touched)" class="error-message">
@@ -94,5 +94,5 @@
     Register
   </button>
 </div>
-
+{{message}}
 </form>

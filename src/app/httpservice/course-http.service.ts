@@ -35,8 +35,28 @@ export class CourseHttpService {
     });
     return response;
   }
+   getCousebyUniqueID(id:number,token:any):Observable<APIResponse<CourseModel>>{
+    let response : Observable<APIResponse<CourseModel>>;
+    response = this.http.get<APIResponse<CourseModel>>(`${this.url}api/Course/ById${id}`,{
+      headers: {
+        'Authorization':`Bearer ${token}`,
+        'Content-Type':'application/json'
+      }
+    });
+    return response;
+  }
+   getCousebyCollgeID(id:number,token:any):Observable<APIResponse<CourseModel>>{
+    let response : Observable<APIResponse<CourseModel>>;
+    response = this.http.get<APIResponse<CourseModel>>(`${this.url}api/Course/college/${id}`,{
+      headers: {
+        'Authorization':`Bearer ${token}`,
+        'Content-Type':'application/json'
+      }
+    });
+    return response;
+  }
 
-  postCollageData(course: CourseModel,token:any):
+  postCourseData(course: CourseModel,token:any):
   Observable<APIResponse<CourseModel>>{
     let response : Observable<APIResponse<CourseModel>>;
   response = this.http.post<APIResponse<CourseModel>>(`${this.url}api/Course`, course, {

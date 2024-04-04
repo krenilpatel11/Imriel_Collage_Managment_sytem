@@ -36,6 +36,16 @@ export class CollageHttpService {
     });
     return response;
   }
+   getCollagebyUniqueId(id:number,token:any):Observable<APIResponse<collageModel>>{
+    let response : Observable<APIResponse<collageModel>>;
+    response = this.http.get<APIResponse<collageModel>>(`${this.url}api/College/ById/${id}`,{
+      headers: {
+        'Authorization':`Bearer ${token}`,
+        'Content-Type':'application/json'
+      }
+    });
+    return response;
+  }
 
   postCollageData(collage: collageModel,token:any):
   Observable<APIResponse<collageModel>>{

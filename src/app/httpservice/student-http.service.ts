@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { APIResponse, StudentModel } from '../../Model/app.Models';
 import { Observable } from 'rxjs';
@@ -16,7 +16,7 @@ export class StudentHttpService {
    getStudentData(token:any):Observable<APIResponse<StudentModel>>{
     let response : Observable<APIResponse<StudentModel>>;
 
-    response = this.http.get<APIResponse<StudentModel>>(`{this.url}api/Student`, {
+    response = this.http.get<APIResponse<StudentModel>>(`${this.url}api/Student`, {
       headers:{
         'Authorization': `Bearer ${token}`
       }
@@ -70,4 +70,20 @@ export class StudentHttpService {
     });
     return response;
   }
+
+  assignCoursesToStudent(admissionId: number, courseUniqueIds: number[], token: string): Observable<APIResponse<StudentModel>> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<APIResponse<StudentModel>>(`${this.url}api/Student/assign-courses/${admissionId}`, courseUniqueIds, { headers });
+  }
+
+  getStudentCourses(studentId: number, token: string): Observable<APIResponse<any>> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<APIResponse<any>>(`${this.url}api/Student/courses/${studentId}`, { headers });
+  }
+
 }

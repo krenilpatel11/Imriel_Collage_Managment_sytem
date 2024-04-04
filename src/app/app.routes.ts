@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { RegistrationComponentComponent } from './registration-component/registration-component.component';
@@ -7,6 +8,19 @@ import { CollagesComponent } from './collages/collages.component';
 import { CollagesCreateComponent } from './collagesChild/collages-create/collages-create.component';
 import { UpdateCollagesComponent } from './collagesChild/update-collages/update-collages.component';
 import { GetCollagesComponent } from './collagesChild/get-collages/get-collages.component';
+import { CoursesComponent } from './courses/courses.component';
+import { CoursesCreateComponent } from './coursesChild/courses-create/courses-create.component';
+import { CourseUpdateComponent } from './coursesChild/course-update/course-update.component';
+import { CourseGetComponent } from './coursesChild/course-get/course-get.component';
+import { StudentsComponent } from './students/students.component';
+import { CreateStudentComponent } from './students/studentChild/create-student/create-student.component';
+import { UpdateStudentComponent } from './students/studentChild/update-student/update-student.component';
+import { StudentGetComponent } from './students/studentChild/get-student/get-student.component';
+import { StudentReportParentComponent } from './studentReport/student-report-parent/student-report-parent.component';
+import { StudentreportCreateComponent } from './studentReport/studentChild/studentreport-create/studentreport-create.component';
+import { StudentreportUpdateComponent } from './studentReport/studentChild/studentreport-update/studentreport-update.component';
+import { StudentreportGetComponent } from './studentReport/studentChild/studentreport-get/studentreport-get.component';
+
 
 export const routes: Routes = [
 {path:'login', component: LoginComponentComponent},
@@ -15,10 +29,36 @@ export const routes: Routes = [
 component: CollagesComponent,
 children: [
   { path: 'create', component: CollagesCreateComponent },
-  { path: 'update', component: UpdateCollagesComponent },
+  { path: 'update/:id', component: UpdateCollagesComponent },
   { path: 'get', component: GetCollagesComponent },
 ]
-
+},
+{path:'course',
+component: CoursesComponent,
+children: [
+  { path: 'create', component: CoursesCreateComponent },
+  { path: 'update/:id', component: CourseUpdateComponent },
+  { path: 'get', component: CourseGetComponent },
+]
+},
+{path:'student',
+component: StudentsComponent,
+children: [
+  { path: 'createStudent', component: CreateStudentComponent },
+  { path: 'updateStudent/:id', component: UpdateStudentComponent },
+  { path: 'getStudent', component: StudentGetComponent },
+  { path: 'getCourses', component: CourseGetComponent },
+  { path: 'getCollage', component: GetCollagesComponent },
+]
+},
+{path:'report',
+component: StudentReportParentComponent,
+children: [
+  { path: 'createReport', component: StudentreportCreateComponent },
+  { path: 'updateReport/:id', component: StudentreportUpdateComponent },
+  { path: 'getReport', component: StudentreportGetComponent },
+  { path: 'getStudent', component: StudentGetComponent },
+]
 },
 {path:'' , component: HomeInfoComponent}
 ];

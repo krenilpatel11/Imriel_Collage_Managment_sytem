@@ -20,11 +20,11 @@ export class CourseModel
     public courseUniqueId: number,
     public CourseId: number,
     public CourseName: string,
-    public CourseFees:number,
-    public CourseDuration:number,
-    public eligibilityCriteria:string,
-    public collageUniqueId:number,
-    public collage: collageModel[]
+    public collegeUniqueId:number,
+    public courseFees:string,
+    public CourseDuration:string,
+    public ElegblityCriteria:string,
+   // public College: collageModel[]
 ){}
 }
 
@@ -33,30 +33,29 @@ export class StudentModel{
 
   constructor(
     public AdmissionId : number,
-    public StudentId:number,
     public FirstName:string,
     public LastName:string,
+    public PhoneNumber:string,
     public Email:string,
-    public PhoneNumber:number,
-    public Address:string,
     public Gender:string,
-    public CollageUniqueId:number,
-    public AdmissionDate:Date,
-    public collage: collageModel[],
-    public StudentCourses: StudentCourses[]
+    public Address:string,
+    public collegeUniqueId:number,
+    public Status:number,
+    //public collage: collageModel[],
+    public Courses: CourseModel[]
     ){}
   }
 
-  export class StudentCourses{
-    [key: string]: any;
+  // export class StudentCourses{
+  //   [key: string]: any;
 
-    constructor(
-      public AdmissionId:number,
-      public Student:StudentModel,
-      public CourseUniqueId:number,
-      public Course:CourseModel,
-    ){}
-  }
+  //   constructor(
+  //     public AdmissionId:number,
+  //     public Student:StudentModel,
+  //     public CourseUniqueId:number,
+  //     public Course:CourseModel,
+  //   ){}
+  // }
 
 // export class AdmissionRecordModel{
 //   constructor(
@@ -69,24 +68,29 @@ export class StudentModel{
 //   ){}
 // }
 
-export class AttendenceModel{
+// export class AttendenceModel{
+//   [key: string]: any;
+
+//   constructor(
+//     public StudentId:number,
+//     public AttendenceDate:Date,
+//     public AttendenceStatus:string
+//   ){}
+// }
+
+export class StudentReportModel{
   [key: string]: any;
 
   constructor(
-    public StudentId:number,
-    public AttendenceDate:Date,
-    public AttendenceStatus:string
-  ){}
-}
+    public studentReportId:number,
+    public AdmissionId:number,
+    public Attendance:string,
+    public Grade:string,
+    public FullName:string,
 
-export class ExamReportModel{
-  [key: string]: any;
+    //public course:CourseModel,
 
-  constructor(
-    public StudentId:number,
-    public courses:CourseModel,
-    public ExamDate:Date,
-    public CGPA: number
+    //public student: StudentModel
 
   ){}
 }

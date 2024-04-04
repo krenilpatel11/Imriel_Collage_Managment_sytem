@@ -1,0 +1,107 @@
+<div class="flex items-center justify-center p-12">
+  <div class="mx-auto w-full max-w-[550px]">
+    <form novalidate>
+      <!-- Admission ID Field -->
+      <div class="mb-5">
+        <label for="ReportID" class="mb-3 block text-base font-medium text-[#07074D]">
+          Report ID
+        </label>
+        <input
+          type="number"
+          name="ReportID"
+          id="ReportID"
+          placeholder="Report ID"
+          [(ngModel)]="studentReport.studentReportId"
+          #admissionId="ngModel"
+          class="w-full rounded-md border border-[#e0e0e0] bg-gray-200 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          disabled="true"
+        />
+      </div>
+      <!-- Admission ID Field -->
+      <div class="mb-5">
+        <label for="admissionId" class="mb-3 block text-base font-medium text-[#07074D]">
+          Admission ID
+        </label>
+        <input
+          type="number"
+          name="admissionId"
+          id="admissionId"
+          placeholder="Admission ID"
+          [(ngModel)]="studentReport.AdmissionId"
+          #admissionId="ngModel"
+          class="w-full rounded-md border border-[#e0e0e0] bg-gray-200  py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          required
+        />
+      </div>
+
+      <!-- Attendance Field -->
+      <div class="mb-5">
+        <label for="attendance" class="mb-3 block text-base font-medium text-[#07074D]">
+          Attendance
+        </label>
+        <input
+          type="text"
+          name="attendance"
+          id="attendance"
+          placeholder="Attendance"
+          [(ngModel)]="studentReport.Attendance"
+          #attendance="ngModel"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          required
+        />
+      </div>
+
+      <!-- Grade Field -->
+      <div class="mb-5">
+        <label for="grade" class="mb-3 block text-base font-medium text-[#07074D]">
+          Grade
+        </label>
+        <input
+          type="text"
+          name="grade"
+          id="grade"
+          placeholder="Grade"
+          [(ngModel)]="studentReport.Grade"
+          #grade="ngModel"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          required
+        />
+      </div>
+
+      <!-- Full Name Field -->
+      <!-- <div class="mb-5">
+        <label for="fullName" class="mb-3 block text-base font-medium text-[#07074D]">
+          Full Name
+        </label>
+        <input
+          type="text"
+          name="fullName"
+          id="fullName"
+          placeholder="Full Name"
+          [(ngModel)]="studentReport.FullName"
+          #fullName="ngModel"
+          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+          required
+        />
+      </div> -->
+
+      <!-- Submit Button -->
+      <div>
+        <button
+          type="submit"
+          class="hover:shadow-form rounded-md bg-gradient-to-tr from-brandGrandient1 to-brandGrandient2 hover:bg-gradient-to-bl py-3 px-8 text-base font-semibold text-white outline-none"
+          (click)="updateStudentReport(studentReport.AdmissionId)"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          class="hover:shadow-form rounded-md bg-gradient-to-tr from-brandGrandient1 to-brandGrandient2 hover:bg-gradient-to-bl py-3 px-8 text-base font-semibold text-white outline-none ms-5"
+          (click)="clearStudentReport()"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -21,6 +21,7 @@ export class CollagesCreateComponent {
     this.collages = new Array<collageModel>();
   }
 
+
   saveCollage(){
     let token = sessionStorage.getItem('token');
     this.serv.postCollageData(this.collage,token)
@@ -35,7 +36,11 @@ export class CollagesCreateComponent {
         this.message = `Error occurred : ${error}`
       }
     })
+
     this.router.navigate(['/collage/get']);
+  }
+  clearCollage(){
+    this.collage = new collageModel(0,0,'','','');
   }
 
 }
