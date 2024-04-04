@@ -19,6 +19,7 @@ export class NavbarComponent {
 
   logout(): void {
     this.serv.logoutUser();
+    sessionStorage.clear();
     this.message = "You have been logged out.";
     console.log(this.message);
   }

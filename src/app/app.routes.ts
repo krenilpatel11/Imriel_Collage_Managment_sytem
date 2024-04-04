@@ -20,6 +20,8 @@ import { StudentReportParentComponent } from './studentReport/student-report-par
 import { StudentreportCreateComponent } from './studentReport/studentChild/studentreport-create/studentreport-create.component';
 import { StudentreportUpdateComponent } from './studentReport/studentChild/studentreport-update/studentreport-update.component';
 import { StudentreportGetComponent } from './studentReport/studentChild/studentreport-get/studentreport-get.component';
+import { AuthServiceService } from './httpservice/auth-service.service';
+import { AuthGuardServiceService } from './httpservice/auth-guard-service.service';
 
 
 export const routes: Routes = [
@@ -27,6 +29,7 @@ export const routes: Routes = [
 {path:'register', component: RegistrationComponentComponent},
 {path:'collage',
 component: CollagesComponent,
+canActivate: [AuthGuardServiceService], data: { expectedRole: 'college' },
 children: [
   { path: 'create', component: CollagesCreateComponent },
   { path: 'update/:id', component: UpdateCollagesComponent },
@@ -35,6 +38,7 @@ children: [
 },
 {path:'course',
 component: CoursesComponent,
+canActivate: [AuthGuardServiceService], data: { expectedRole: 'college' },
 children: [
   { path: 'create', component: CoursesCreateComponent },
   { path: 'update/:id', component: CourseUpdateComponent },
@@ -44,8 +48,8 @@ children: [
 {path:'student',
 component: StudentsComponent,
 children: [
-  { path: 'createStudent', component: CreateStudentComponent },
-  { path: 'updateStudent/:id', component: UpdateStudentComponent },
+  { path: 'createStudent', component: CreateStudentComponent ,canActivate: [AuthGuardServiceService], data: { expectedRole: 'student' }},
+  { path: 'updateStudent/:id', component: UpdateStudentComponent, canActivate: [AuthGuardServiceService], data: { expectedRole: 'student' } },
   { path: 'getStudent', component: StudentGetComponent },
   { path: 'getCourses', component: CourseGetComponent },
   { path: 'getCollage', component: GetCollagesComponent },
@@ -54,8 +58,8 @@ children: [
 {path:'report',
 component: StudentReportParentComponent,
 children: [
-  { path: 'createReport', component: StudentreportCreateComponent },
-  { path: 'updateReport/:id', component: StudentreportUpdateComponent },
+  { path: 'createReport', component: StudentreportCreateComponent , canActivate: [AuthGuardServiceService], data: { expectedRole: 'college' }},
+  { path: 'updateReport/:id', component: StudentreportUpdateComponent ,canActivate: [AuthGuardServiceService], data: { expectedRole: 'college' }},
   { path: 'getReport', component: StudentreportGetComponent },
   { path: 'getStudent', component: StudentGetComponent },
 ]

@@ -12,7 +12,7 @@ export class AuthGuardServiceService implements CanActivate{
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data['expectedRole'];
     const actualRole = this.authService.getRole();
-
+    
     if (this.authService.isAuthenticated() && actualRole === expectedRole) {
       return true;
     } else {
