@@ -75,6 +75,8 @@ export class StudentGetComponent implements OnInit {
         next: (response) => {
           this.message = response.Message;
           this.students = this.students.filter(student => student.AdmissionId !== studentIdToDelete);
+          console.log(this.message);
+
         },
         error: (error) => {
           this.message = `Error occurred: ${error}`;

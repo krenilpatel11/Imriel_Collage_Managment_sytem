@@ -58,11 +58,15 @@ export class CourseUpdateComponent implements OnInit  {
       next: (response) => {
         this.message = response.Message;
         this.courses = response.Records;
+        console.log(this.message);
+
       },
       error: (error) => {
         this.message = `Error occurred: ${error}`;
       }
     });
+    this.router.navigate(['/course/get']);
+
   }
   clearCourse(){
     this.course = new CourseModel(0,0,'',0,'','','');

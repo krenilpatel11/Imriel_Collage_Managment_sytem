@@ -33,6 +33,8 @@ export class CreateStudentComponent {
             // Assuming you have an array of students to which you want to add the new student
             this.students = [...this.students, this.student];
             this.router.navigate(['/student/getStudent']); // Navigate after the student is created
+            console.log(this.message);
+
           },
           error: (error) => {
             this.message = `Error occurred: ${error}`;

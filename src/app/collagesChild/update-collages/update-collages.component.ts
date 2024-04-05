@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { collageModel } from '../../../Model/app.Models';
 import { CollageHttpService } from '../../httpservice/collage-http.service';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-collages',
@@ -20,7 +20,7 @@ export class UpdateCollagesComponent implements OnInit {
   collageIdToDelete:number = 0;
   todelete: any;
 
-  constructor(private serv: CollageHttpService, private act: ActivatedRoute){
+  constructor(private serv: CollageHttpService, private act: ActivatedRoute,private router: Router){
     this.message = '';
     this.collagetoUpdate = new collageModel(0,0,'','','');
     this.collages = new Array<collageModel>();
@@ -41,11 +41,15 @@ export class UpdateCollagesComponent implements OnInit {
         this.collagetoUpdate = response.Record;
         this.message = response.Message;
         console.log(response.Record);
+        console.log(this.message);
+
       },
       error:(error)=>{
         this.message = `Error occurred : ${error}`
       }
     });
+    this.router.navigate(['/collage/get']);
+
   }
 
   getCollageById(id: number): void {

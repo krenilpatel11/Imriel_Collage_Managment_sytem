@@ -35,6 +35,7 @@ export class CoursesCreateComponent {
         this.message = response.Message;
         this.courses = [...this.courses, this.course];
         //this.getCourses(); // Refresh the list
+        console.log(this.message);
         this.router.navigate(['/course/get']);
       },
       error: (error) => {

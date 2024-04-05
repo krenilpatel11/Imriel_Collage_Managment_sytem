@@ -45,6 +45,9 @@ export class UpdateStudentComponent
           next: (response) => {
             // Assuming the response contains the student record
             this.student = response.Record;
+            this.message = response.Message;
+            console.log(this.message);
+
             // ... handle the rest of your logic
           },
           error: (error) => {

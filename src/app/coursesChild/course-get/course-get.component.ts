@@ -81,6 +81,8 @@ export class CourseGetComponent implements OnInit{
       next: (response) => {
         this.message = response.Message;
         this.courses = response.Records; // Refresh the course list
+        console.log(this.message);
+
       },
       error: (error) => {
         this.message = `Error occurred: ${error}`;

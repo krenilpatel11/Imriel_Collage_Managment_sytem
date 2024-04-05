@@ -33,7 +33,9 @@ export class StudentreportCreateComponent {
             this.message = response.Message; // Assuming the response contains a message
             // Assuming you have an array of student reports to which you want to add the new report
             this.studentReports = [...this.studentReports, this.studentReport];
-            this.router.navigate(['/student-report/getStudentReport']); // Navigate after the student report is created
+            this.router.navigate(['/report/getReport']); // Navigate after the student report is created
+            console.log(this.message);
+
           },
           error: (error) => {
             this.message = `Error occurred: ${error}`;

@@ -30,6 +30,8 @@ export class CollagesCreateComponent {
         console.log('Save successful:', response);
         this.collage = response.Record;
         this.message = response.Message;
+        console.log(this.message);
+
         this.collages = [...this.collages, this.collage];
       },
       error:(error)=>{
